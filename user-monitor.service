@@ -1,0 +1,12 @@
+[Unit]
+Description=Monitor for user deletion
+After=graphical.target
+
+[Service]
+ExecStart=/usr/local/bin/user_monitor.sh
+Restart=on-failure
+User=yourusername
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target
