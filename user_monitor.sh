@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-USERNAME_TO_MONITOR="targetuser"
+USERNAME_TO_MONITOR="bob"
 CHECK_INTERVAL=60  # seconds
 
 # Function to send popup notification and sound alert
