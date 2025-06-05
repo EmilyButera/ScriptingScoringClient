@@ -1,0 +1,13 @@
+[Unit]
+Description=UFW Web Dashboard
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/ufw_web.py
+Restart=always
+User=yourusername
+WorkingDirectory=/path/to/
+Environment=FLASK_ENV=production
+
+[Install]
+WantedBy=multi-user.target
