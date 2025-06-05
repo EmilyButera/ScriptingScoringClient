@@ -13,8 +13,7 @@ def homepage():
 def ufw_status():
     if os.path.exists(STATUS_FILE):
         with open(STATUS_FILE) as f:
-            data = json.load(f)
-        return jsonify(data)
+            return jsonify(json.load(f))
     else:
         return jsonify({"error": "Status file not found"}), 404
 
