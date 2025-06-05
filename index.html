@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UFW Status Monitor</title>
+    <title>UFW Status</title>
     <style>
-        body { font-family: sans-serif; padding: 2em; background: #f4f4f4; }
-        .enabled { color: green; }
-        .disabled { color: red; }
+        body { font-family: sans-serif; margin: 2em; background: #f9f9f9; }
+        .good { color: green; }
+        .bad { color: red; }
     </style>
 </head>
 <body>
     <h1>UFW Firewall Status</h1>
-    <div id="status">Loading...</div>
-
+    <div id="status">Loading status...</div>
     <script>
-        fetch('/status')
-            .then(res => res.json())
-            .then(data => {
-                if (data.installed === false) {
-                    document.getElementById('status').innerHTML = '<span class="disabled">UFW is not installed</span>';
-                } else if (data.enabled === false) {
-                    document.getElementById('status').innerHTML = '<span class="disabled">UFW is installed but DISABLED</span>';
-                } else {
-                    document.getElementById('status').innerHTML = '<span class="enabled">UFW is ENABLED</span>';
-                }
-            }).catch(err => {
-                document.getElementById('status').textContent = 'Error fetching status.';
-            });
+        fetch('/status').then(res => res.json()).then(data => {
+            let msg;
+            if (!data.installed) {
+                msg = '<span class="bad">UFW is NOT installed</span>';
+            } else if (!data.enabled) {
+                msg = '<span class="bad">UFW is installed but DISABLED</span>';
+            } else {
+                msg = '<span class="good">UFW is ENABLED</span>';
+            }
+            document.getElementById('status').innerHTML = msg + `<br><small>Last checked: ${data.timestamp}</small>`;
+        }).catch(() => {
+            document.getElementById('status').innerHTML = '<span class="bad">Could not load status</span>';
+        });
     </script>
 </body>
 </html>
