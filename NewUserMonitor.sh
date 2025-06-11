@@ -1,7 +1,13 @@
 #!/bin/bash
 
+import subprocess
+import json
+import time
+from datetime import datetime
+
 # Configuration
 USERNAME_TO_MONITOR="bob"
+STATUS_FILE = "/usr/local/bin/firewall_status.json"
 CHECK_INTERVAL=5  # seconds
 
 # Track previous state
@@ -24,6 +30,12 @@ function alert_user_deleted {
     fi
 }
 
+# Get current timestamp in ISO format
+LAST_CHECKED=$(date --iso-8601=seconds)
+
+# Create JSON and write to file using jq
+
+
 while true; do
     if id "$USERNAME_TO_MONITOR" &>/dev/null; then
         # User exists now
@@ -36,6 +48,8 @@ while true; do
         if $user_existed; then
             echo "[ALERT] User '$USERNAME_TO_MONITOR' deleted at $(date)"
             alert_user_deleted
+            jq -n --arg status "$user_existed" --arg time "$LAST_CHECKED" \
+              '{User status: $user_existed, last_checked: $time}' > "$STATUS_FILE"
         fi
         user_existed=false
     fi
