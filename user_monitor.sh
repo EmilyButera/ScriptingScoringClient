@@ -2,7 +2,7 @@
 
 # Configuration
 USERNAME_TO_MONITOR="bob"
-CHECK_INTERVAL=5  # seconds
+CHECK_INTERVAL=3  # seconds
 
 # Track previous state
 user_existed=true

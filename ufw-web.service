@@ -3,9 +3,9 @@ Description=UFW Web Dashboard
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /path/to/ufw_web.py
+ExecStart=/usr/bin/python3 /var/www/html/ufw_web.py
 Restart=always
-User=yourusername
+User=student
 WorkingDirectory=/path/to/
 Environment=FLASK_ENV=production
 

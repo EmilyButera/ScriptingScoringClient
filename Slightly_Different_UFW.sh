@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHECK_INTERVAL=60  # in seconds
+CHECK_INTERVAL=5  # in seconds
 STATUS_FILE="/var/www/html/ufw_status.json"
 NOTIFY() {
     notify-send "UFW Firewall Monitor" "$1"

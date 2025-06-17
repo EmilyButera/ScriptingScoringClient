@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHECK_INTERVAL=60  # seconds
+CHECK_INTERVAL=3  # seconds
 ufw_installed=true
 ufw_enabled=true
 

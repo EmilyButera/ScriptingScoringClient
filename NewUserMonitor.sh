@@ -8,7 +8,7 @@ from datetime import datetime
 # Configuration
 USERNAME_TO_MONITOR="bob"
 STATUS_FILE = "/usr/local/bin/user_status.json"
-CHECK_INTERVAL=5  # seconds
+CHECK_INTERVAL=3 # seconds
 
 # Track previous state
 user_existed=true
