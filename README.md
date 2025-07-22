@@ -1,3 +1,6 @@
+# Script Scoring Client
+### Software to be put on a virtual machine to assist students in learning defensive security
+
 Currently working on: Scripting tutorial
 Future projects: Apache server vulnerability exploit,
 
